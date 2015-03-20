@@ -175,9 +175,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc %attr(0644,root,root) %{docs}/COPYING
 %doc %attr(0644,root,root) %{docs}/README
 %doc %attr(0644,root,root) %{docs}/README-MySQL
-%doc %attr(0644,root,root) %{docs}/LICENSE.asio
-%doc %attr(0644,root,root) %{docs}/LICENSE.crc32c
-%doc %attr(0644,root,root) %{docs}/LICENSE.chromium
 
 %files -n Percona-XtraDB-Cluster-garbd-2
 %defattr(-,root,root,-)
