@@ -65,37 +65,33 @@ Prefix: %{_prefix}
   %endif
 %endif
 
-%define redhatversion %(lsb_release -rs | awk -F. '{ print $1}')
-%define distribution  rhel%{redhatversion}
-
 %if "%rhel" == "7"
     %define distro_requires           chkconfig nmap
 %else
     %define distro_requires           chkconfig nc
 %endif
 
-
-Name:		Percona-XtraDB-Cluster-galera-3
+Name:		@@PKGNAME@@
 Version:	%{galera_version}
-Release:	%{pxcg_revision}.%{?distribution}
+Release:	%{pxcg_revision}%{?dist}
 Summary:	Galera libraries of Percona XtraDB Cluster
 Group:		Applications/Databases
 License:	GPLv3
 URL:		http://www.percona.com/
 Source0:        percona-xtradb-cluster-galera-3.tar.gz
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-Provides: Percona-XtraDB-Cluster-galera-25 galera3
-Obsoletes: Percona-XtraDB-Cluster-galera-56 
-Conflicts: Percona-XtraDB-Cluster-galera-2
+Provides:       @@PKGNAME@@
+Obsoletes: 	Percona-XtraDB-Cluster-galera-3
+Conflicts: 	Percona-XtraDB-Cluster-galera-2
 BuildRequires:	scons check-devel glibc-devel %{gcc_req} openssl-devel %{boost_req} check-devel
 
 %description
 This package contains the Galera library required by Percona XtraDB Cluster.
 
-%package -n Percona-XtraDB-Cluster-garbd-3
+%package -n     @@GARBPKGNAME@@
 Summary:	Garbd component of Percona XtraDB Cluster
 Group:		Applications/Databases
-Provides:       garbd3
+Provides:       @@GARBPKGNAME@@
 Requires:       %{distro_requires}
 %if 0%{?systemd}
 BuildRequires:  systemd
@@ -110,7 +106,7 @@ Requires(preun):  /sbin/chkconfig
 Requires(preun):  /sbin/service
 %endif
 
-%description -n Percona-XtraDB-Cluster-garbd-3
+%description -n @@GARBPKGNAME@@
 This package contains the garb binary and init scripts.
 
 %prep
@@ -192,7 +188,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc %attr(0644,root,root) %{docs}/LICENSE.crc32c
 %doc %attr(0644,root,root) %{docs}/LICENSE.chromium
 
-%files -n Percona-XtraDB-Cluster-garbd-3
+%files -n @@GARBPKGNAME@@
 %defattr(-,root,root,-)
 %config(noreplace,missingok) %{_sysconfdir}/sysconfig/garb
 %attr(0755,nobody,nobody) %dir %{_sharedstatedir}/galera
@@ -207,22 +203,26 @@ rm -rf $RPM_BUILD_ROOT
 %doc %attr(0644,root,root) %{docs2}/README
 %doc %attr(644, root, man) %{_mandir}/man8/garbd.8*
 
-%post -n Percona-XtraDB-Cluster-garbd-3
+%post -n @@GARBPKGNAME@@
 %if 0%{?systemd}
   %systemd_post garb
 %endif
 
-%preun -n Percona-XtraDB-Cluster-garbd-3
+%preun -n @@GARBPKGNAME@@
 %if 0%{?systemd}
     %systemd_preun garb
 %endif
 
-%postun -n Percona-XtraDB-Cluster-garbd-3
+%postun -n @@GARBPKGNAME@@
 %if 0%{?systemd}
     %systemd_postun_with_restart garb
 %endif
 
 %changelog
+* Mon May 23 2016 Evgeniy Patlan <evgeniy.patlan@percona.com>
+- rename packages
+- fix src rpm name
+
 * Thu May 15 2014 Raghavendra Prabhu <raghavendra.prabhu@percona.com>
 - Split the packaging for garbd.
 - Library is now installed in /usr/lib/galera2 with a symlink to /usr/lib/ for compatibility.
