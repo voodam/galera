@@ -29,7 +29,7 @@ Architecture: any
 Section: debug
 Conflicts: percona-galera-3-dbg
 Replaces: percona-galera-3-dbg
-Depends: percona-xtradb-cluster-galera-3.x (= ${binary:Version}), ${misc:Depends}
+Depends: galera-57 (= ${binary:Version}), ${misc:Depends}
 Description: Debugging package for Percona XtraDB Cluster Galera 3.
 
 Package: galera-garbd-57-dbg
@@ -37,5 +37,5 @@ Architecture: any
 Section: debug
 Conflicts: percona-galera-arbitrator-3-dbg
 Replaces: percona-galera-arbitrator-3-dbg
-Depends: percona-xtradb-cluster-garbd-3.x (= ${binary:Version}), ${misc:Depends}
+Depends: galera-garbd-57 (= ${binary:Version}), ${misc:Depends}
 Description: Debugging package for Percona XtraDB Cluster Garbd 3.
