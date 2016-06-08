@@ -81,8 +81,7 @@ URL:		http://www.percona.com/
 Source0:        percona-xtradb-cluster-galera-3.tar.gz
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Provides:       @@PKGNAME@@
-Obsoletes: 	Percona-XtraDB-Cluster-galera-3
-Conflicts: 	Percona-XtraDB-Cluster-galera-2
+Conflicts: 	Percona-XtraDB-Cluster-galera-3 Percona-XtraDB-Cluster-galera-2
 BuildRequires:	scons check-devel glibc-devel %{gcc_req} openssl-devel %{boost_req} check-devel
 
 %description
