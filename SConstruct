@@ -158,15 +158,7 @@ strict_build_flags = int(ARGUMENTS.get('strict_build_flags', 0))
 static_ssl = ARGUMENTS.get('static_ssl', None)
 install = ARGUMENTS.get('install', None)
 
-<<<<<<< HEAD
-
-GALERA_VER = ARGUMENTS.get('version', '3.40')
-||||||| merged common ancestors
-
-GALERA_VER = ARGUMENTS.get('version', '3.29')
-=======
-GALERA_VER = ARGUMENTS.get('version', '3.30')
->>>>>>> release_25.3.30
+GALERA_VER = ARGUMENTS.get('version', '3.42')
 GALERA_REV = ARGUMENTS.get('revno', 'XXXX')
 
 # Attempt to read from file if not given
