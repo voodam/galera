@@ -102,6 +102,8 @@ typedef enum status_vars
     STATS_FC_SSENT,
 //    STATS_FC_CSENT,
     STATS_FC_RECEIVED,
+    STATS_FC_ACTIVE,
+    STATS_FC_REQUESTED,
     STATS_CERT_DEPS_DISTANCE,
     STATS_APPLY_OOOE,
     STATS_APPLY_OOOL,
@@ -152,6 +154,8 @@ static const struct wsrep_stats_var wsrep_stats[STATS_MAX + 1] =
     { "flow_control_sent",        WSREP_VAR_INT64,  { 0 }  },
 //    { "flow_control_conts_sent",  WSREP_VAR_INT64,  { 0 }  },
     { "flow_control_recv",        WSREP_VAR_INT64,  { 0 }  },
+    { "flow_control_active",      WSREP_VAR_STRING, { 0 }  },
+    { "flow_control_requested",   WSREP_VAR_STRING, { 0 }  },
     { "cert_deps_distance",       WSREP_VAR_DOUBLE, { 0 }  },
     { "apply_oooe",               WSREP_VAR_DOUBLE, { 0 }  },
     { "apply_oool",               WSREP_VAR_DOUBLE, { 0 }  },
@@ -228,7 +232,10 @@ galera::ReplicatorSMM::stats_get()
     sv[STATS_FC_SSENT            ].value._int64  = stats.fc_ssent;
 //    sv[STATS_FC_CSENT            ].value._int64  = stats.fc_csent;
     sv[STATS_FC_RECEIVED         ].value._int64  = stats.fc_received;
-
+    sv[STATS_FC_ACTIVE           ].value._string = stats.fc_active    ?
+        "true" : "false";
+    sv[STATS_FC_REQUESTED        ].value._string = stats.fc_requested ?
+        "true" : "false";
 
     double avg_cert_interval(0);
     double avg_deps_dist(0);
@@ -237,10 +244,16 @@ galera::ReplicatorSMM::stats_get()
 
     sv[STATS_CERT_DEPS_DISTANCE  ].value._double = avg_deps_dist;
     sv[STATS_CERT_INTERVAL       ].value._double = avg_cert_interval;
+<<<<<<< HEAD
     sv[STATS_CERT_INDEX_SIZE     ].value._int64 = index_size;
     sv[STATS_CERT_BUCKET_COUNT   ].value._int64 = cert_.bucket_count();
 
     sv[STATS_GCACHE_POOL_SIZE    ].value._int64 = gcache_.allocated_pool_size();
+||||||| 4e1a604e
+    sv[STATS_CERT_INDEX_SIZE     ].value._int64 = index_size;
+=======
+    sv[STATS_CERT_INDEX_SIZE     ].value._int64  = index_size;
+>>>>>>> release_25.3.31
 
     double oooe;
     double oool;
