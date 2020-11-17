@@ -163,13 +163,7 @@ static_ssl = ARGUMENTS.get('static_ssl', None)
 install = ARGUMENTS.get('install', None)
 version_script = int(ARGUMENTS.get('version_script', 1))
 
-<<<<<<< HEAD
-GALERA_VER = ARGUMENTS.get('version', '3.42')
-||||||| 4e1a604e
-GALERA_VER = ARGUMENTS.get('version', '3.30')
-=======
-GALERA_VER = ARGUMENTS.get('version', '3.31')
->>>>>>> release_25.3.31
+GALERA_VER = ARGUMENTS.get('version', '3.44')
 GALERA_REV = ARGUMENTS.get('revno', 'XXXX')
 
 # Attempt to read from file if not given

@@ -244,16 +244,10 @@ galera::ReplicatorSMM::stats_get()
 
     sv[STATS_CERT_DEPS_DISTANCE  ].value._double = avg_deps_dist;
     sv[STATS_CERT_INTERVAL       ].value._double = avg_cert_interval;
-<<<<<<< HEAD
     sv[STATS_CERT_INDEX_SIZE     ].value._int64 = index_size;
     sv[STATS_CERT_BUCKET_COUNT   ].value._int64 = cert_.bucket_count();
 
     sv[STATS_GCACHE_POOL_SIZE    ].value._int64 = gcache_.allocated_pool_size();
-||||||| 4e1a604e
-    sv[STATS_CERT_INDEX_SIZE     ].value._int64 = index_size;
-=======
-    sv[STATS_CERT_INDEX_SIZE     ].value._int64  = index_size;
->>>>>>> release_25.3.31
 
     double oooe;
     double oool;
