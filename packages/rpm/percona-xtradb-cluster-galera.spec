@@ -157,8 +157,6 @@ install -m 644 $RPM_BUILD_DIR/%{src_dir}/packages/rpm/README-MySQL \
     $RPM_BUILD_ROOT%{docs}/README-MySQL
 install -m 644 $RPM_BUILD_DIR/%{src_dir}/asio/LICENSE_1_0.txt    \
     $RPM_BUILD_ROOT%{docs}/LICENSE.asio
-install -m 644 $RPM_BUILD_DIR/%{src_dir}/www.evanjones.ca/LICENSE \
-    $RPM_BUILD_ROOT%{docs}/LICENSE.crc32c
 install -m 644 $RPM_BUILD_DIR/%{src_dir}/chromium/LICENSE       \
     $RPM_BUILD_ROOT%{docs}/LICENSE.chromium
 
@@ -186,7 +184,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc %attr(0644,root,root) %{docs}/README
 %doc %attr(0644,root,root) %{docs}/README-MySQL
 %doc %attr(0644,root,root) %{docs}/LICENSE.asio
-%doc %attr(0644,root,root) %{docs}/LICENSE.crc32c
 %doc %attr(0644,root,root) %{docs}/LICENSE.chromium
 
 %files -n Percona-XtraDB-Cluster-garbd-3
